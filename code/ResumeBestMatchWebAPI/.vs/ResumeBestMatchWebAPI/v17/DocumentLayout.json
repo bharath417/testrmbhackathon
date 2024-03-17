@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{559A2297-8539-4B8F-BE1B-0F84886139E7}|ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI.csproj|c:\\users\\shant\\source\\repos\\hackathon2024-march\\anonymous\\code\\resumebestmatchwebapi\\resumebestmatchwebapi\\controllers\\rbmapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{559A2297-8539-4B8F-BE1B-0F84886139E7}|ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI.csproj|solutionrelative:resumebestmatchwebapi\\controllers\\rbmapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{559A2297-8539-4B8F-BE1B-0F84886139E7}|ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI.csproj|C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\resumebestmatchwebapi\\models\\apirequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{559A2297-8539-4B8F-BE1B-0F84886139E7}|ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI.csproj|solutionrelative:resumebestmatchwebapi\\models\\apirequestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{559A2297-8539-4B8F-BE1B-0F84886139E7}|ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI.csproj|C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\resumebestmatchwebapi\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{559A2297-8539-4B8F-BE1B-0F84886139E7}|ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI.csproj|solutionrelative:resumebestmatchwebapi\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{559A2297-8539-4B8F-BE1B-0F84886139E7}|ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI.csproj|C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\resumebestmatchwebapi\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{559A2297-8539-4B8F-BE1B-0F84886139E7}|ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI.csproj|solutionrelative:resumebestmatchwebapi\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{559A2297-8539-4B8F-BE1B-0F84886139E7}|ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI.csproj|C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\resumebestmatchwebapi\\models\\apiresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{559A2297-8539-4B8F-BE1B-0F84886139E7}|ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI.csproj|solutionrelative:resumebestmatchwebapi\\models\\apiresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WebApiConfig.cs",
+              "DocumentMoniker": "C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI\\App_Start\\WebApiConfig.cs",
+              "RelativeDocumentMoniker": "ResumeBestMatchWebAPI\\App_Start\\WebApiConfig.cs",
+              "ToolTip": "C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI\\App_Start\\WebApiConfig.cs",
+              "RelativeToolTip": "ResumeBestMatchWebAPI\\App_Start\\WebApiConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-17T06:14:35.952Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RouteConfig.cs",
+              "DocumentMoniker": "C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI\\App_Start\\RouteConfig.cs",
+              "RelativeDocumentMoniker": "ResumeBestMatchWebAPI\\App_Start\\RouteConfig.cs",
+              "ToolTip": "C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI\\App_Start\\RouteConfig.cs",
+              "RelativeToolTip": "ResumeBestMatchWebAPI\\App_Start\\RouteConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-17T06:14:29.86Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApiRequestModel.cs",
+              "DocumentMoniker": "C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI\\Models\\ApiRequestModel.cs",
+              "RelativeDocumentMoniker": "ResumeBestMatchWebAPI\\Models\\ApiRequestModel.cs",
+              "ToolTip": "C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI\\Models\\ApiRequestModel.cs",
+              "RelativeToolTip": "ResumeBestMatchWebAPI\\Models\\ApiRequestModel.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABEAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T19:45:56.106Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApiResponseModel.cs",
+              "DocumentMoniker": "C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI\\Models\\ApiResponseModel.cs",
+              "RelativeDocumentMoniker": "ResumeBestMatchWebAPI\\Models\\ApiResponseModel.cs",
+              "ToolTip": "C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI\\Models\\ApiResponseModel.cs",
+              "RelativeToolTip": "ResumeBestMatchWebAPI\\Models\\ApiResponseModel.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAIA6wBsAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T04:39:25.149Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RBMApiController.cs",
+              "DocumentMoniker": "C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI\\Controllers\\RBMApiController.cs",
+              "RelativeDocumentMoniker": "ResumeBestMatchWebAPI\\Controllers\\RBMApiController.cs",
+              "ToolTip": "C:\\Users\\shant\\source\\repos\\Hackathon2024-March\\anonymous\\code\\ResumeBestMatchWebAPI\\ResumeBestMatchWebAPI\\Controllers\\RBMApiController.cs",
+              "RelativeToolTip": "ResumeBestMatchWebAPI\\Controllers\\RBMApiController.cs",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAiwFUAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-15T18:48:45.854Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
