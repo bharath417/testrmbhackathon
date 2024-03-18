@@ -108,14 +108,57 @@ namespace ResumeBestMatchWebAPI.Controllers
             }
             foreach (var filedata in results.values)
             {
-                count = Regex.Matches(filedata(item).ToString(), context).Count;
+                if (category == "resume")
+                {
+                    count = Regex.Matches(filedata(item).ToString(), context).Count;
+                    if (count > 0)
+                    {
+                        if (responseFileMatchCount <= noOfMatches)
+                        {
+                            res = new results
+                            {
+                                id = j,
+                                score = "0.5",
+                                path = file.Name
+                            };
+                            resList.Add(res);
+                            responseFileMatchCount++;
+                        }
+                        j++;
+                    }
+                    count = 0;
+                }
+                else if (category == "JD")
+                {
+                    //code for .docx file read
+                        responseModel = new ApiResponseModel
+                        {
+                            status = "No Code",
+                            count = count,
+                        };
+                }
+                else
+                {
+                    //code for txt file read
+                    responseModel = new ApiResponseModel
+                    {
+                        status = "No Code",
+                        count = count,
+                    };
+                }
+                
             }
-            
+            responseModel = new ApiResponseModel
+                {
+                    status = "success",
+                    count = responseFileMatchCount,
+                    results = resList
+                };
             //Console.WriteLine(results);
             //
-            if (dir.Exists)
+            /* if (dir.Exists)
             {
-                IEnumerable<FileInfo> filesList = dir.GetFiles("*.*", SearchOption.TopDirectoryOnly);
+                 IEnumerable<FileInfo> filesList = dir.GetFiles("*.*", SearchOption.TopDirectoryOnly);
                 IEnumerable<FileInfo> fileQuery = from file in filesList
                                                   where file.Extension == ((category == "resume") ? ".pdf" : (category == "JD" ? ".docx" : ".txt"))
                                                   orderby file.Name.ToString()
@@ -177,14 +220,14 @@ namespace ResumeBestMatchWebAPI.Controllers
                         };
                     }
 
-                }
+                } 
                 responseModel = new ApiResponseModel
                 {
                     status = "success",
                     count = responseFileMatchCount,
                     results = resList
                 };
-            }
+            } */
             return responseModel;
         }
         public async Task<string> ReadPdfFromBlob(string connectionString, string containerName, string blobName)
