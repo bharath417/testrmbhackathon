@@ -62,68 +62,56 @@ namespace ResumeBestMatchWebAPI.Controllers
             //
             BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
             BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
-            //dictionary object delcaration
+            
             var results = new Dictionary<string, string>();
 
             await foreach (var blobItem in containerClient.GetBlobsAsync())
             {
                 BlobClient blobClient = containerClient.GetBlobClient(blobItem.Name);
                 Console.WriteLine($"Reading blob: {blobItem.Name}");
-                //BlobClient blobClient = blobServiceClient.GetBlobContainerClient(containerName).GetBlobClient(blobItem.Name);
-                //
-                if (true)
-                {
-                    
-                }
-                string pdfstringcontent = ReadPdfFromBlob(connectionString, containerName, blobItem.Name);
-                Console.WriteLine(pdfstringcontent);
                 
-                /* StringBuilder text = new StringBuilder();
-
-                using (var memoryStream = new MemoryStream())
+                if (blobItem.Name.Contains(".pdf"))
                 {
-                    await blobClient.DownloadToAsync(memoryStream);
-                    memoryStream.Position = 0;
-
-                    PdfReader pdfReader = new PdfReader(memoryStream);
-
-                    for (int page = 1; page <= pdfReader.NumberOfPages; page++)
-                    {
-                        ITextExtractionStrategy strategy = new SimpleTextExtractionStrategy();
-                        string currentPageText = PdfTextExtractor.GetTextFromPage(pdfReader, page, strategy);
-                        text.Append(currentPageText);
-                    }
-
-                    pdfReader.Close();
+                    string content = await new Program().ReadPdfFromBlob(connectionString, containerName, blobItem.Name);
+                    Console.WriteLine(content);
+                    results.Add(blobItem.Name, content);
                 }
-
-                Console.WriteLine(text.ToString()); */
-                if (await blobClient.ExistsAsync())
+                else if (blobItem.Name.Contains(".docx"))
                 {
-                    var response = await blobClient.DownloadAsync();
-                    try
+                    string content = new Program().ReadDocFromBlob(connectionString, containerName, blobItem.Name);
+                    Console.WriteLine(content);
+                    results.Add(blobItem.Name, content);
+                }
+                else
+                {
+                    if (await blobClient.ExistsAsync())
                     {
-
-
-                        //using (var streamReader = new StreamReader(response.Value.Content, System.Text.Encoding.Default))
-                        using (var streamReader = new StreamReader(response.Value.Content))
-
+                        var response = await blobClient.DownloadAsync();
+                        try
                         {
+                            using (var streamReader = new StreamReader(response.Value.Content))
+                            {
 
-                            string content = await streamReader.ReadToEndAsync();
-                            var list = content.Where(item => content.Contains(context))
-                            //string content = streamReader;
-                            results.Add(blobItem.Name, content); //collect everythung into dictionary
-                            //Console.WriteLine(content);
-                        } 
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message.ToString());
+                                string content = await streamReader.ReadToEndAsync();
+
+                                
+                                results.Add(blobItem.Name, content);
+                                
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message.ToString());
+                        }
                     }
                 }
-
             }
+            foreach (var filedata in results.values)
+            {
+                count = Regex.Matches(filedata(item).ToString(), context).Count;
+            }
+            
+            //Console.WriteLine(results);
             //
             if (dir.Exists)
             {
@@ -224,6 +212,37 @@ namespace ResumeBestMatchWebAPI.Controllers
             }
 
             return text.ToString();
+        }
+
+        public string ReadDocFromBlob(string connectionString, string containerName, string blobName)
+        {
+            
+            // Create a BlobServiceClient to interact with the blob service
+            BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
+
+            // Get a reference to the container
+            BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
+
+            // Get a reference to the blob
+            BlobClient blobClient = containerClient.GetBlobClient(blobName);
+
+            // Download the blob to a stream
+            using (var memoryStream = new MemoryStream())
+            {
+                blobClient.DownloadTo(memoryStream);
+
+                // Use OpenXml to read the .docx file from the stream
+                using (WordprocessingDocument wordDoc = WordprocessingDocument.Open(memoryStream, false))
+                {
+                    // Read the document text
+                    
+
+                    // Print the text
+                    return wordDoc.MainDocumentPart.Document.Body.InnerText;
+
+                }
+            }
+
         }
     }
 }
