@@ -1,4 +1,4 @@
-﻿using iTextSharp.text.pdf;
+using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 using ResumeBestMatchWebAPI.Models;
 using System;
@@ -13,6 +13,7 @@ using System.Web.Http;
 
 namespace ResumeBestMatchWebAPI.Controllers
 {
+    
     public class RBMApiController : ApiController
     {
         public StringBuilder text;
@@ -20,6 +21,8 @@ namespace ResumeBestMatchWebAPI.Controllers
         public results res;
         public ApiResponseModel responseModel;
 
+        private static string connectionString = "DefaultEndpointsProtocol=https;AccountName=anonymustorageaccount;AccountKey=KhVZIFdo89NJ2iMK6vIXQYl5nEqBw+RI10a/mxARUygiN1JlDVP4mRrzpt5mlpnELZ9Q5PmHkfHZ+AStNaWJcQ==;EndpointSuffix=core.windows.net";
+        private static string containerName = "resumetestdata";
         public RBMApiController()
         {
             text = new StringBuilder();
@@ -56,6 +59,72 @@ namespace ResumeBestMatchWebAPI.Controllers
             int count = 0;
             int responseFileMatchCount = 1;
             DirectoryInfo dir = new DirectoryInfo(filePath);
+            //
+            BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
+            BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containerName);
+            //dictionary object delcaration
+            var results = new Dictionary<string, string>();
+
+            await foreach (var blobItem in containerClient.GetBlobsAsync())
+            {
+                BlobClient blobClient = containerClient.GetBlobClient(blobItem.Name);
+                Console.WriteLine($"Reading blob: {blobItem.Name}");
+                //BlobClient blobClient = blobServiceClient.GetBlobContainerClient(containerName).GetBlobClient(blobItem.Name);
+                //
+                if (true)
+                {
+                    
+                }
+                string pdfstringcontent = ReadPdfFromBlob(connectionString, containerName, blobItem.Name);
+                Console.WriteLine(pdfstringcontent);
+                
+                /* StringBuilder text = new StringBuilder();
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    await blobClient.DownloadToAsync(memoryStream);
+                    memoryStream.Position = 0;
+
+                    PdfReader pdfReader = new PdfReader(memoryStream);
+
+                    for (int page = 1; page <= pdfReader.NumberOfPages; page++)
+                    {
+                        ITextExtractionStrategy strategy = new SimpleTextExtractionStrategy();
+                        string currentPageText = PdfTextExtractor.GetTextFromPage(pdfReader, page, strategy);
+                        text.Append(currentPageText);
+                    }
+
+                    pdfReader.Close();
+                }
+
+                Console.WriteLine(text.ToString()); */
+                if (await blobClient.ExistsAsync())
+                {
+                    var response = await blobClient.DownloadAsync();
+                    try
+                    {
+
+
+                        //using (var streamReader = new StreamReader(response.Value.Content, System.Text.Encoding.Default))
+                        using (var streamReader = new StreamReader(response.Value.Content))
+
+                        {
+
+                            string content = await streamReader.ReadToEndAsync();
+                            var list = content.Where(item => content.Contains(context))
+                            //string content = streamReader;
+                            results.Add(blobItem.Name, content); //collect everythung into dictionary
+                            //Console.WriteLine(content);
+                        } 
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message.ToString());
+                    }
+                }
+
+            }
+            //
             if (dir.Exists)
             {
                 IEnumerable<FileInfo> filesList = dir.GetFiles("*.*", SearchOption.TopDirectoryOnly);
@@ -129,6 +198,32 @@ namespace ResumeBestMatchWebAPI.Controllers
                 };
             }
             return responseModel;
+        }
+        public async Task<string> ReadPdfFromBlob(string connectionString, string containerName, string blobName)
+        {
+            BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
+            BlobClient blobClient = blobServiceClient.GetBlobContainerClient(containerName).GetBlobClient(blobName);
+
+            StringBuilder text = new StringBuilder();
+
+            using (var memoryStream = new MemoryStream())
+            {
+                await blobClient.DownloadToAsync(memoryStream);
+                memoryStream.Position = 0;
+
+                PdfReader pdfReader = new PdfReader(memoryStream);
+
+                for (int page = 1; page <= pdfReader.NumberOfPages; page++)
+                {
+                    ITextExtractionStrategy strategy = new SimpleTextExtractionStrategy();
+                    string currentPageText = PdfTextExtractor.GetTextFromPage(pdfReader, page, strategy);
+                    text.Append(currentPageText);
+                }
+
+                pdfReader.Close();
+            }
+
+            return text.ToString();
         }
     }
 }
