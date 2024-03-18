@@ -10,6 +10,10 @@ using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.Http;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 
 namespace ResumeBestMatchWebAPI.Controllers
 {
